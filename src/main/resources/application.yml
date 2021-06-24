@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: devops-sample
+
+management:
+  server:
+    port: 9090
+  web:
+    server:
+      auto-time-requests: true
+  endpoints:
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+    web:
+      exposure:
+      #   # 将 Actuator 的 /actuator/prometheus 端点暴露出来
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        step: 1m
+        descriptions: true
+    tags:
+      application: ${spring.application.name}

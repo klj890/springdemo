@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: springboot-exporter
+  namespace: test
+  labels:
+    app: demo-exporter
+spec:
+  selector:
+    matchLabels:
+      app: demo-exporter
+  endpoints:
+    - path: /actuator/prometheus
+      port: metrics
